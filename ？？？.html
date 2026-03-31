@@ -31,21 +31,18 @@
             margin: 0;
             padding: 0;
         }
-
-        /* 背景のメッセージ：文字数が多いのでサイズを調整し、自動折り返しを有効に */
         #bg-text {
             position: absolute;
             width: 100%;
-            font-size: 8vw; /* 文字数に合わせて小さめに調整 */
+            font-size: 8vw;
             color: #ff0000;
             opacity: 0.15;
             z-index: 1;
             pointer-events: none;
-            word-break: break-all; /* どこでも折り返す */
+            word-break: break-all;
             white-space: normal;
         }
 
-        /* 前景のタイマー：3行表示 */
         #timer {
             position: relative;
             font-size: 25vw;
@@ -66,7 +63,6 @@
     </div>
 
     <script>
-        // 目標時刻：2026年4月1日 01:00:00
         const targetDate = new Date('2026-04-01T01:00:00').getTime();
 
         function updateTimer() {
