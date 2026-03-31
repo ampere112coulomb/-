@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>譁ｰ縺励＞縺翫＞縺薙＠?譁ｰ縺溘↑莠悟鴻?</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            font-family: 'Helvetica Neue', Arial, "Hiragino Sans", "Meiryo", sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 90vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .timer-common {
+            font-weight: 200;
+            line-height: 1.1;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 背景のメッセージ：文字数が多いのでサイズを調整し、自動折り返しを有効に */
+        #bg-text {
+            position: absolute;
+            width: 100%;
+            font-size: 8vw; /* 文字数に合わせて小さめに調整 */
+            color: #ff0000;
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+            word-break: break-all; /* どこでも折り返す */
+            white-space: normal;
+        }
+
+        /* 前景のタイマー：3行表示 */
+        #timer {
+            position: relative;
+            font-size: 25vw;
+            color: #ff0000;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="bg-text" class="timer-common">
+            IuOBneOCjCLjga805pyIMeaXpTE6MDDjgavjgZPjgZPjgbjmnaXjgb7jgZnjgII=
+        </div>
+        
+        <div id="timer" class="timer-common">--<br>--<br>--</div>
+    </div>
+
+    <script>
+        // 目標時刻：2026年4月1日 01:00:00
+        const targetDate = new Date('2026-04-01T01:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('timer').innerHTML = "もうそこにいる";
+                clearInterval(interval);
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const h = String(hours).padStart(2, '0');
+            const m = String(minutes).padStart(2, '0');
+            const s = String(seconds).padStart(2, '0');
+
+            document.getElementById('timer').innerHTML = `${h}<br>${m}<br>${s}`;
+        }
+
+        const interval = setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
